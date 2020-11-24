@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer;
+namespace Symplify\PHPMDDecomposer;
 
-use Migrify\PHPMDDecomposer\PHPMDDecomposer\PHPStanConfigFactory;
-use Migrify\PHPMDDecomposer\ValueObject\DecomposedFileConfigs;
+use Symplify\PHPMDDecomposer\PHPMDDecomposer\PHPStanConfigFactory;
+use Symplify\PHPMDDecomposer\ValueObject\DecomposedFileConfigs;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class PHPMDDecomposer

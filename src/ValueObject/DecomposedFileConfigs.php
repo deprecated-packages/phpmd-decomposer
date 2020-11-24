@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\ValueObject;
+namespace Symplify\PHPMDDecomposer\ValueObject;
 
-use Migrify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
+use Symplify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 
 final class DecomposedFileConfigs
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\Arrays;
+namespace Symplify\PHPMDDecomposer\Arrays;
 
 use Symplify\PackageBuilder\Yaml\ParametersMerger;
 

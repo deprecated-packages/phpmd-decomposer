@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\HttpKernel;
+namespace Symplify\PHPMDDecomposer\HttpKernel;
 
-use Migrify\MigrifyKernel\Bundle\MigrifyKernelBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
+use Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
 
 final class PHPMDDecomposerKernel extends Kernel
 {
@@ -32,6 +32,6 @@ final class PHPMDDecomposerKernel extends Kernel
      */
     public function registerBundles(): iterable
     {
-        return [new MigrifyKernelBundle(), new PhpConfigPrinterBundle()];
+        return [new SymplifyKernelBundle(), new PhpConfigPrinterBundle()];
     }
 }

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\Tests\PHPMDDecomposer\PHPStanPHPMDDecomposer;
+namespace Symplify\PHPMDDecomposer\Tests\PHPMDDecomposer\PHPStanPHPMDDecomposer;
 
 use Iterator;
-use Migrify\PHPMDDecomposer\HttpKernel\PHPMDDecomposerKernel;
-use Migrify\PHPMDDecomposer\PHPMDDecomposer\PHPStanConfigFactory;
-use Migrify\PHPMDDecomposer\Printer\PHPStanPrinter;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\EasyTesting\DataProvider\StaticFixtureUpdater;
 use Symplify\EasyTesting\StaticFixtureSplitter;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Symplify\PHPMDDecomposer\HttpKernel\PHPMDDecomposerKernel;
+use Symplify\PHPMDDecomposer\PHPMDDecomposer\PHPStanConfigFactory;
+use Symplify\PHPMDDecomposer\Printer\PHPStanPrinter;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class PHPStanPHPMDDecomposerTest extends AbstractKernelTestCase
@@ -60,8 +60,7 @@ final class PHPStanPHPMDDecomposerTest extends AbstractKernelTestCase
         );
 
         $this->assertSame(
-            $inputFileInfoAndExpectedFileInfo->getExpectedFileInfo()
-                ->getContents(),
+            $inputFileInfoAndExpectedFileInfo->getExpectedFileContent(),
             $phpstanFileContent,
             $fixtureFileInfo->getRelativeFilePathFromCwd()
         );

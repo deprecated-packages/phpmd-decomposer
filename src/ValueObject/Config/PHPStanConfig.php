@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\ValueObject\Config;
+namespace Symplify\PHPMDDecomposer\ValueObject\Config;
 
 final class PHPStanConfig extends AbstractConfig
 {

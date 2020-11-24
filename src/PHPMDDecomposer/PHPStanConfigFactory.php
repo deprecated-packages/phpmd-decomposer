@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\PHPMDDecomposer;
+namespace Symplify\PHPMDDecomposer\PHPMDDecomposer;
 
 use DOMDocument;
 use DOMElement;
-use Migrify\PHPMDDecomposer\Blueprint\PHPMDToPHPStanBluerprint;
-use Migrify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 use Nette\Utils\Strings;
+use Symplify\PHPMDDecomposer\Blueprint\PHPMDToPHPStanBluerprint;
+use Symplify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
- * @see \Migrify\PHPMDDecomposer\Tests\PHPMDDecomposer\PHPStanPHPMDDecomposer\PHPStanPHPMDDecomposerTest
+ * @see \Symplify\PHPMDDecomposer\Tests\PHPMDDecomposer\PHPStanPHPMDDecomposer\PHPStanPHPMDDecomposerTest
  */
 final class PHPStanConfigFactory extends AbstractConfigFactory
 {

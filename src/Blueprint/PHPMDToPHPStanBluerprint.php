@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\Blueprint;
+namespace Symplify\PHPMDDecomposer\Blueprint;
 
-use Migrify\PHPMDDecomposer\ValueObject\Config\MatchToPHPStanConfig;
-use Migrify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
+use Symplify\PHPMDDecomposer\ValueObject\Config\MatchToPHPStanConfig;
+use Symplify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 use Symplify\PHPStanRules\ObjectCalisthenics\Rules\NoElseAndElseIfRule;
 use Symplify\PHPStanRules\Rules\NoDefaultParameterValueRule;
 

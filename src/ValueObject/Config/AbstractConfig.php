@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\ValueObject\Config;
+namespace Symplify\PHPMDDecomposer\ValueObject\Config;
 
-use Migrify\PHPMDDecomposer\Arrays\ArrayMerger;
 use Symplify\PackageBuilder\Yaml\ParametersMerger;
+use Symplify\PHPMDDecomposer\Arrays\ArrayMerger;
 
 abstract class AbstractConfig
 {

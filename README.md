@@ -1,13 +1,13 @@
 # PHPMD Decomposer
 
-[![Downloads total](https://img.shields.io/packagist/dt/migrify/phpmd-decomposer.svg?style=flat-square)](https://packagist.org/packages/migrify/phpmd-decomposer/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/symplify/phpmd-decomposer.svg?style=flat-square)](https://packagist.org/packages/symplify/phpmd-decomposer/stats)
 
 Decompose phpmd.xml to PHPStan, ECS and Rector rules
 
 ## Install
 
 ```bash
-composer require migrify/phpmd-decomposer --dev
+composer require symplify/phpmd-decomposer --dev
 ```
 
 ## Use

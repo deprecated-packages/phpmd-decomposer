@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\Printer;
+namespace Symplify\PHPMDDecomposer\Printer;
 
-use Migrify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 use Nette\Neon\Encoder;
 use Nette\Neon\Neon;
 use Nette\Utils\Strings;
+use Symplify\PHPMDDecomposer\ValueObject\Config\PHPStanConfig;
 
 final class PHPStanPrinter
 {

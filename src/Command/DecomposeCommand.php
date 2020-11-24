@@ -2,22 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\Command;
+namespace Symplify\PHPMDDecomposer\Command;
 
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
-use Migrify\MigrifyKernel\Exception\ShouldNotHappenException;
-use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\PHPMDDecomposer\PHPMDDecomposer;
-use Migrify\PHPMDDecomposer\Printer\PHPStanPrinter;
-use Migrify\PHPMDDecomposer\ValueObject\DecomposedFileConfigs;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
+use Symplify\PackageBuilder\ValueObject\Option;
+use Symplify\PHPMDDecomposer\PHPMDDecomposer;
+use Symplify\PHPMDDecomposer\PHPStan\PHPStanConfigPrinter;
 use Symplify\SmartFileSystem\FileSystemGuard;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class DecomposeCommand extends AbstractMigrifyCommand
+final class DecomposeCommand extends AbstractSymplifyCommand
 {
     /**
      * @var PHPMDDecomposer
@@ -25,32 +24,31 @@ final class DecomposeCommand extends AbstractMigrifyCommand
     private $phpmdDecomposer;
 
     /**
-     * @var PHPStanPrinter
+     * @var PHPStanConfigPrinter
      */
-    private $phpStanPrinter;
+    private $phpStanConfigPrinter;
 
     public function __construct(
         FileSystemGuard $fileSystemGuard,
         PHPMDDecomposer $phpmdDecomposer,
-        PHPStanPrinter $phpStanPrinter
+        PHPStanConfigPrinter $phpStanConfigPrinter
     ) {
         $this->fileSystemGuard = $fileSystemGuard;
         $this->phpmdDecomposer = $phpmdDecomposer;
-
-        $this->phpStanPrinter = $phpStanPrinter;
+        $this->phpStanConfigPrinter = $phpStanConfigPrinter;
 
         parent::__construct();
     }
 
     protected function configure(): void
     {
-        $this->addArgument(MigrifyOption::SOURCES, InputArgument::REQUIRED, 'File path to phpmd.xml to convert');
-        $this->setDescription('Converts phpmd.xml to phpstan.neon, ecs.php and rector.php');
+        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED, 'File path to phpmd.xml to convert');
+        $this->setDescription('Converts phpmd.xml to ecs.php, phpstan.neon and rector.php');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $source = (string) $input->getArgument(MigrifyOption::SOURCES);
+        $source = (string) $input->getArgument(Option::SOURCES);
         $this->fileSystemGuard->ensureFileExists($source, __METHOD__);
 
         $phpmdXmlFileInfo = new SmartFileInfo($source);
@@ -61,24 +59,10 @@ final class DecomposeCommand extends AbstractMigrifyCommand
         $decomposedFileConfigs = $this->phpmdDecomposer->decompose($phpmdXmlFileInfo);
 
         // @todo for all files
-        $this->printPHPStanConfig($decomposedFileConfigs, $phpmdXmlFileInfo);
+        $this->phpStanConfigPrinter->printPHPStanConfig($decomposedFileConfigs, $phpmdXmlFileInfo);
 
         $this->symfonyStyle->success('Done');
 
         return ShellCode::SUCCESS;
-    }
-
-    private function printPHPStanConfig(
-        DecomposedFileConfigs $decomposedFileConfigs,
-        SmartFileInfo $phpmdXmlFileInfo
-    ): void {
-        $phpstanConfig = $decomposedFileConfigs->getPHPStanConfig();
-        if (! $phpstanConfig->isEmpty()) {
-            $path = $phpmdXmlFileInfo->getPath();
-            $phpstanFilePath = $path . '/phpmd-decomposed-phpstan.neon';
-
-            $phpStanFileContent = $this->phpStanPrinter->printPHPStanConfig($phpstanConfig);
-            $this->smartFileSystem->dumpFile($phpstanFilePath, $phpStanFileContent);
-        }
     }
 }

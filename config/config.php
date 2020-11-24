@@ -13,7 +13,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Migrify\PHPMDDecomposer\\', __DIR__ . '/../src')
+    $services->load('Symplify\PHPMDDecomposer\\', __DIR__ . '/../src')
         ->exclude([__DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
 
     $services->set(ParametersMerger::class);

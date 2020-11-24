@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\PHPMDDecomposer\PHPMDDecomposer;
+namespace Symplify\PHPMDDecomposer\PHPMDDecomposer;
 
 use DOMDocument;
 use Symplify\SmartFileSystem\SmartFileInfo;
